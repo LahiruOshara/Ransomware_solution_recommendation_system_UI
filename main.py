@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 import pprint
 import os.path
+import json
 
 
 def show_diagnostic_results():
@@ -42,7 +43,7 @@ def load_window():
 
     results_viewer_column = [
         [sg.Text("Diagnostics Results")],
-        [sg.Text(size=(100, 1), key="-TOUT-")],
+        [sg.Text(size=(100, 100), key="-TOUT-")],
         [sg.Image(key="-IMAGE-")],
     ]
 
@@ -74,4 +75,11 @@ def load_window():
             print(extension)
             '''
 
-            window["-TOUT-"].update(format_output())
+            #out =  main(file,name,extension) //return (json1 json2 json3)
+
+
+            window["-TOUT-"].update(json.dumps(parsed, indent=4, sort_keys=True))
+
+
+
+load_window()
